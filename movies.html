@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2&family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <title>What to watch next?</title>
+    <style>
+        body {
+            margin: 0;
+            color: white;
+            background-color: black;
+        }
+        
+        @font-face {
+            font-family: Gagalin;
+            src: url('Gagalin-Regular.ttf');
+        }
+        
+        #abc {
+            font-size: 60px;
+            color: black;
+        }
+        
+        .abtcont {
+            background-image: linear-gradient(red,black);
+            width: 1500px;
+            height: 500px;
+            color: white;
+            text-align: center;
+        }
+        
+        .abtcont ul {
+            list-style-type: none;
+            font-family: Gagalin;
+            text-align: center;
+            margin-right: 50px;
+            display: inline-flex;
+            padding: 10px 100px;
+        }
+        
+        .abtcont ul li {
+            font-size: 40px;
+            text-shadow: 2px 2px crimson;
+        }
+        
+        .abtcont ul img {
+            width: 70px;
+            height: 70px;
+        }
+        
+        .abtcont h1 {
+            font-family: Gagalin;
+            font-size: 60px;
+            text-shadow: 2px 2px crimson;
+            text-align: center;
+        }
+        
+        .abtcont p {
+            font-size: 30px;
+            font-family: Gagalin;
+            text-align: center;
+        }
+        
+        a:link,
+        a:active,
+        a:visited,
+        a:hover {
+            color: white;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+        
+        img {
+            border-radius: 15px;
+        }
+        
+        #e {
+            height: 100%;
+            width: 100%;
+            //background-image: url("https://img.mensxp.com/media/content/2020/Jan/header-20th-Century-Stdios_5e33b341f08fa_1200x900.jpeg");
+            // background-image: url("https://thewallpaper.co//wp-content/uploads/2019/10//comic-images-adventure-hd-wallpaper-action-hero-background-images-comedy-marvel-warrior-deadpool-superhero-poster-comics-jpg.jpg");
+            background-image: url("https://w.wallhaven.cc/full/6k/wallhaven-6k7q8w.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+            border-color: black;
+            background-color: transparent;
+            color: white;
+            font-size: 19px;
+            line-height: 1.55405;
+            letter-spacing: .1px;
+            font-family: "Sofia";
+            text-shadow: 2px 2px 4px #000000;
+        }
+        
+        hr {
+            margin: 0;
+        }
+        
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid white;
+            color: white;
+        }
+        
+        tr {
+            transition-duration: 0.5s;
+        }
+        
+        tr:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+        
+        H1 {
+            color: white;
+            margin: 0;
+            text-align: left;
+            font-family: "Sofia";
+            text-shadow: 2px 2px 4px #000000;
+        }
+        
+        H2 {
+            font-family: "Sofia";
+            text-shadow: 2px 2px 4px #000000;
+            margin: 0;
+        }
+        
+        p {
+            font-family: "Sofia";
+            text-shadow: 4px 4px 8px #000000;
+        }
+        
+        .button2 {
+            border: 2px solid black;
+            color: white;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            font-family: "Sofia";
+        }
+        
+        .button1 {
+            border-radius: 12px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-family: "Sofia";
+        }
+        
+        .button3 {
+            margin-top: 0px;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            font-family: "Sofia";
+        }
+        
+        .button4 {
+            margin-top: 0px;
+            height: 100%;
+            width: 100%;
+            background-color: tranparent;
+            color: white;
+            font-family: "Sofia";
+        }
+        
+        .button1:hover {
+            background-color: red;
+            color: white;
+        }
+        
+        #di {
+            margin: 0;
+            padding: 16px;
+            background-image: url("https://movieandtvbuff.files.wordpress.com/2019/05/john-wick-3-hd-wallpaper-5.jpg");
+            background-color: #cccccc;
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            opacity: 0.7;
+        }
+        
+        #myBtn:hover {
+            background-color: grey;
+        }
+        
+        #f {
+            background-image: url("https://wallpaperset.com/w/full/a/e/8/30155.jpg");
+            background-color: #cccccc;
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #j {
+            background-image: url("https://i.pinimg.com/originals/34/0f/df/340fdf7dbd54b0929317ec5822eefa50.jpg");
+            background-color: #cccccc;
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #tt {
+            background-image: url("https://imgix.bustle.com/uploads/image/2020/4/11/0a67db55-9158-4e50-b0da-ff06df62ea67-mv5bmjixoti4nzkyov5bml5banbnxkftztcwnzq5otizmw_v1_sx1292_cr001292999_al_.jpg?w=1020&h=574&fit=crop&crop=faces&auto=format%2Ccompress&cs=srgb&q=70");
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #c {
+            background-image: url("https://wallpapertag.com/wallpaper/full/0/6/6/423350-most-popular-sunset-wallpaper-hd-1920x1200-notebook.jpg");
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #ee {
+            background-image: url("https://cdn.wallpapersafari.com/24/60/W9Nuz2.jpg");
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #ik {
+            background-image: url("https://www.pixel4k.com/wp-content/uploads/2018/09/the-boss-baby-animated-movie-2017_1536400671.jpg");
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #i {
+            //background-image: url("https://cdn.wallpapersafari.com/47/12/x70mcg.jpg");
+            background-image: url("https://film-grab.com/wp-content/uploads/2013/02/4850.jpg");
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #h {
+            background-image: url("https://eskipaper.com/images/great-wallpapers-6.jpg");
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #v {
+            background-image: url("https://i.pinimg.com/originals/cd/64/8c/cd648c90d56b4bda7f82aac56de53c56.jpg");
+            height: auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #nf {
+            border-radius: 5px;
+            float: right;
+            width: 55px;
+            height: 55px;
+            margin-right: 15px;
+            margin-top: -35px;
+            background-image: url("https://i.pinimg.com/originals/8c/51/0e/8c510ee7de078ac4eaafdb9d15a810dd.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #nf1 {
+            border-radius: 5px;
+            float: right;
+            width: 55px;
+            height: 55px;
+            margin-right: 15px;
+            margin-top: -35px;
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSY7F3j4iV2WzDFTqxjSAeY_ccpTZvWQlm91g&usqp=CAU");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        #nf2 {
+            border-radius: 5px;
+            float: right;
+            width: 55px;
+            height: 55px;
+            margin-right: 15px;
+            margin-top: -35px;
+            background-image: url("https://i.gadgets360cdn.com/large/disney_plus_hotstar_logo_1583901149861.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        
+        a11 {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .navbar {
+            overflow: hidden;
+            background-color: black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+        
+        header.topbar {
+            background-color: black;
+            position: fixed;
+            width: 100%;
+            height: 43px;
+            font-size: 30px;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            color: white;
+        }
+        
+        .topbar a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 10px 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        
+        .topbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        
+        #content {
+            margin-top: 43px;
+            z-index: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <header class="topbar">
+        <a href="index.html" target="_blank">Home</a>
+        <a href="order.html" target="_blank">Order Online</a>
+
+        <a href="movies.html" target="_blank">Movies/Shows</a>
+        <a href="books.html" target="_blank">Books</a>
+        <a href="recipe.html" target="_blank">Recipes</a>
+        <a href="yoga.html" target="_blank">Yoga</a>
+        <a href="#about">Contact</a>
+
+    </header>
+    <div id="content">
+        <div id="di">
+            <H1>MARS: What to watch next?</H1>
+            <div id="nf">
+                <a class="button3 button4 a11" href="https://www.netflix.com"></a>
+            </div>
+            <div id="nf1">
+                <a class="button3 button4 a11" href="https://www.primevideo.com/"></a>
+            </div>
+            <div id="nf2">
+                <a class="button3 button4 a11" href="https://www.hotstar.com/in"></a>
+            </div>
+            <br><br><br>
+            <p>Please select a genre:-)</p>
+            <a class="button2 button1" onClick="document.getElementById('e').scrollIntoView();">Comedy</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="button2 button1" onClick="document.getElementById('c').scrollIntoView();">Romance</a><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="button2 button1" onClick="document.getElementById('f').scrollIntoView();">Action/Sci-Fi</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="button2 button1" onClick="document.getElementById('i').scrollIntoView();">Crime</a><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a class="button2 button1" onClick="document.getElementById('h').scrollIntoView();">Mystery</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <a class="button2 button1" onClick="document.getElementById('v').scrollIntoView();">Adventure</a><br><br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="button2 button1" onClick="document.getElementById('j').scrollIntoView();">Horror</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="button2 button1" onClick="document.getElementById('tt').scrollIntoView();">Children</a><br><br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="button2 button1" onClick="document.getElementById('ee').scrollIntoView();">Drama</a></div>
+        <hr>
+        <div id="e">
+            <h2>Comedy</h2>
+            <table>
+
+                <tr>
+                    <td style="width: 350px;">We're the Millers</td>
+                    <td style="width: 10px;"><img src="https://www.joblo.com/assets/images/oldsite/posters/images/full/were-the-millers-character1_thumb.jpg" alt="" width="175" height="263" /></td>
+                    <td style="width: 784px;">David, a drug dealer, is forced by his boss to smuggle drugs from Mexico. He hires a stripper, a petty thief and a teenage neighbour and forms a fake family to help him smuggle the drugs.</td>
+
+                    <td style="width: 74px;">Netflix</td>
+                    <td style="width: 74px;"><a href="https://www.imdb.com/title/tt1723121/?ref_=nv_sr_srsg_0" target="_blank" rel="noopener">IMDb<br>7</a></td>
+                </tr>
+                <tr>
+                    <td style="width: 350px;">Friends<br>(Sitcom)</td>
+                    <td style="width: 10px;"><img src="https://www.gstatic.com/tv/thumb/tvbanners/7892603/p7892603_b_v8_ad.jpg" width="175" height="263" /></td>
+                    <td style="width: 784px;">Follow the lives of six reckless adults living in Manhattan, as they indulge in adventures which make their lives both troublesome and happening.</td>
+
+                    <td style="width: 74px;">Netlix<br>S1-10</td>
+                    <td style="width: 74px;"><a href="https://www.imdb.com/title/tt0108778/">IMDb 8.9</a></td>
+                </tr>
+                <tr>
+                    <td style="width: 350px;">Schitt"s Creek<br>(Sitcom)</td>
+                    <td style="width: 10px;"><img src="https://www.gstatic.com/tv/thumb/tvbanners/17653956/p17653956_b_v8_aa.jpg" width="175" height="263" /></td>
+                    <td style="width: 784px;">A married couple suddenly go bankrupt and the only remaining asset they have is an ugly small town named Schitt's Creek.</td>
+
+                    <td style="width: 74px;">Netlix<br>S1-6</td>
+                    <td style="width: 74px;"><a href="https://www.imdb.com/title/tt3526078/">IMDb 8.4</a></td>
+                </tr>
+                <tr>
+                    <td style="width: 350px;">Hera Pheri</td>
+                    <td style="width: 10px;"><img src="https://m.media-amazon.com/images/M/MV5BMGMzZjY2ZWQtZjQxYS00NWY3LThhNjItNWQzNTkzOTllODljXkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_UY268_CR5,0,182,268_AL__QL50.jpg" alt="" width="176" height="258" /></td>
+                    <td style="width: 784px;">Three unemployed men look for answers to all their money problems - but when their opportunity arrives, will they know what to do with it?</td>
+
+                    <td style="width: 74px;">Amazon Prime</td>
+                    <td style="width: 74px;"><a href="https://www.imdb.com/title/tt0242519/?ref_=adv_li_tt" target="_blank" rel="noopener">IMDb 8.2</a></td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        <div id="c">
+            <h2>Romance</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="width: 350px;">The Fault in our stars</td>
+                        <td style="width: 10px;"><img src="https://www.movienewsletters.net/photos/172913R1.jpg" alt="poster" width="177" height="266" /></td>
+                        <td style="width: 784px; text-align: center;">Two cancer-afflicted teenagers Hazel and Augustus meet at a cancer support group. The two of them embark on a journey to visit a reclusive author in Amsterdam.</td>
+
+                        <td style="width: 74px;">Disney+Hotstar</td>
+                        <td style="width: 74px;"><a href="https://www.imdb.com/title/tt2582846/?ref_=nv_sr_srsg_0" target="_blank" rel="noopener">IMDb 7.7</a></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 350px;">Jaane Tu... Ya Jaane Na</td>
+                        <td style="width: 10px;"><img src="https://www.gstatic.com/tv/thumb/v22vodart/175248/p175248_v_v8_aa.jpg" alt="" width="176" height="264" /></td>
+                        <td style="width: 784px; text-align: center;">Best friends Jai and Aditi make for a perfect couple but refuse to consider a romantic relationship. However, when they start dating other people, they realise that they are actually in love.</td>
+
+                        <td style="width: 74px;">Netflix</td>
+                        <td style="width: 74px;"><a href="https://www.imdb.com/title/tt0473367/?ref_=nv_sr_srsg_0" target="_blank" rel="noopener">IMDb 7.5</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <div id="f">
+            <h2>Action/Sci-Fi</h2>
+            <table>
+                <tr>
+                    <td style="width: 350px;">Inception</td>
+                    <td style="width: 10px;"><img src="data:image/jpeg;base64,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"
+                            alt="" width="178" height="267" /></td>
+                    <td style="width: 784px; text-align: center;">Cobb steals information from his targets by entering their dreams. Saito offers to wipe clean Cobb's criminal history as payment for performing an inception on his sick competitor's son.</td>
+
+                    <td style="width: 74px;">Amazon Prime</td>
+                    <td style="width: 74px;"><a href="https://www.imdb.com/title/tt1375666/?ref_=nv_sr_srsg_0" target="_blank" rel="noopener">IMDb 8.8</a></td>
+                </tr>
+                <tr>
+
+                    <td style="width: 350px;">The Matrix</td>
+                    <td style="width: 10px;"><img src="https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL__QL50.jpg" alt="" width="183" height="268" /></td>
+                    <td style="width: 784px; text-align: center;">Thomas Anderson, a computer programmer, is led to fight an underground war against powerful computers who have constructed his entire reality with a system called the Matrix.</td>
+                    <td style="width: 74px;">Netflix</td>
+                    <td style="width: 74px;"><a title="IMDb" href="https://www.imdb.com/title/tt0133093/?ref_=adv_li_tt" target="_blank" rel="noopener">IMDb 8.7</a></td>
+                </tr>
+            </table>
+        </div>
+        <div id="i">
+            <h2>Crime</h2>
+            <table>
+                <tr>
+                    <td style="width: 350px;">Lucifer<br>(Series)</td>
+                    <td style="width: 10px;"><img src="https://assets2.ignimgs.com/2016/08/24/luciferver3xlgjpg-fe465d.jpg" alt="" width="175" height="263" /></td>
+                    <td style="width: 784px;">Lucifer, a demon, returns from hell to reside in Los Angeles and runs a club. He soon gets involved with the local police and assists them in solving tricky criminal cases.
+                    </td>
+
+                    <td style="width: 74px;">Netflix<br>S1-4</td>
+                    <td style="width: 74px;"><a href="https://www.imdb.com/title/tt4052886/">IMDb 8.2</a></td>
+                </tr>
+                <tr>
+                    <td style="width: 350px;">Article-15</td>
+                    <td style="width: 10px;"><img src="https://m.media-amazon.com/images/M/MV5BZTI2NTFiMDMtZjQxNS00YjBkLWFhNWMtOTIyMzE5Yjc0ZTZiXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_UY268_CR2,0,182,268_AL__QL50.jpg" alt="" width="183" height="268" /></td>
+                    <td style="width: 784px;">In the rural heartlands of India, an upright police officer sets out on a crusade against violent caste-based crimes and discrimination.</td>
+                    <td style="width: 74px;">Netflix</td>
+                    <td style="width: 74px;"><a href="https://www.imdb.com/title/tt10324144/?ref_=nv_sr_srsg_0" target="_blank" rel="noopener">IMDb 8.2</a></td>
+                </tr>
+                <tr>
+                    <td style="width: 350px;">Unbelievable<br>(Series)</td>
+                    <td style="width: 10px;"><img src="https://m.media-amazon.com/images/M/MV5BN2Q3OWQ1Y2UtN2E3OS00ODA2LWE1Y2EtYmY5OWMzNWYzMDZmXkEyXkFqcGdeQXVyMzY0MTE3NzU@._V1_UX182_CR0,0,182,268_AL__QL50.jpg" alt="" width="183" height="268" /></td>
+                    <td style="width: 784px;">Based on the true story of Marie, a teenager who was charged with lying about having been raped, and the two female detectives who followed the path to the truth.</td>
+                    <td style="width: 74px;">Netflix</td>
+                    <td style="width: 74px;"><a href="https://www.imdb.com/title/tt7909970/?ref_=nv_sr_srsg_0" target="_blank" rel="noopener">IMDb 8.4</a></td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        <div id="h">
+            <h2>Mystery</h2>
+            <table>
+                <tr>
+                    <td style="width: 350px;">Dark<br>(Series)</td>
+                    <td style="width: 10px;"><img src="https://m.media-amazon.com/images/M/MV5BZmY2YzU4NDktODIxYi00YWIyLWIzYTctODBkYzYzZjc0ODdlXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_QL50_SY1000_CR0,0,675,1000_AL_.jpg" alt="" width="175" height="263" /></td>
+                    <td style="width: 784px;">A family saga with a supernatural twist, set in a German town, where the disappearance of two young children exposes the relationships among four families.</td>
+
+                    <td style="width: 74px;">Netflix<br>S1-3</td>
+                    <td style="width: 74px;"><a href="https://www.imdb.com/title/tt5753856/?ref_=nv_sr_srsg_0" target="_blank" rel="noopener">IMDb 8.8</a></td>
+                </tr>
+                <tr>
+                    <td style="width: 350px;">Money Heist<br>(Series)</td>
+                    <td style="width: 10px;"><img src="https://m.media-amazon.com/images/M/MV5BZDcxOGI0MDYtNTc5NS00NDUzLWFkOTItNDIxZjI0OTllNTljXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL__QL50.jpg" alt="" width="175" height="263" /></td>
+                    <td style="width: 784px;">An unusual group of robbers attempt to carry out the most perfect robbery in Spanish history - stealing 2.4 billion euros from the Royal Mint of Spain.</td>
+
+                    <td style="width: 74px;">Netflix<br>S1-4</td>
+                    <td style="width: 74px;">
+                        <a href="https://www.imdb.com/title/tt6468322/?ref_=nv_sr_srsg_0" _blank " rel="noopener ">IMDb 8.4</a></td>
+            </tr></table></div><hr>
+           
+<div id="v">
+ <h2>Adventure</h2>
+<table>
+<tr>
+
+<td style="width: 350px; ">Interstellar</td>
+<td style="width: 10px; "><img src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_UX182_CR0,0,182,268_AL__QL50.jpg " alt=" " width="183 " height="268 " /></td>
+<td style="width: 784px; ">A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</td>
+
+<td style="width: 74px; ">Amazon Prime</td>
+<td style="width: 74px; "><a href="https://www.imdb.com/title/tt0816692/?ref_=nv_sr_srsg_0 " target="_blank " rel="noopener ">IMDb 8.6</a></td>
+</tr></table>
+</div>
+<div id="ee">
+<h2>Drama</h2>
+<table>
+ <tr>
+                <td style="width: 350px; ">Chhichhore</td>
+                <td style="width: 10px; "><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRZ96L-VbSx8fQWHGPPczdQkEduyv-FvtoUaD5r8CvO7H4vCAtm " alt=" " width="175 " height="263 " /></td>
+                <td style="width: 784px; ">A tragic incident forces Anirudh, a middle-aged man, to take a trip down memory lane and reminisce his college days along with his friends, who were labelled as losers.</td>
+
+                <td style="width: 74px; ">Disney+Hotstar</td>
+                <td style="width: 74px; "><a href="https://www.imdb.com/title/tt9052870/?ref_=nv_sr_srsg_0 ">IMDb 8.2</a></td>
+            </tr>
+<tr>
+
+<td style="width: 350px; ">Into the Night<br>(Series)</td>
+<td style="width: 10px; "><img src="https://m.media-amazon.com/images/M/MV5BZjNiMzJkZDMtZDg4NC00YjQyLTg2ZGQtOGVjNDdjZGQyZWU4XkEyXkFqcGdeQXVyMjQ0NDQxNDA@._V1_UY268_CR16,0,182,268_AL__QL50.jpg " alt=" " width="183 " height="268 " /></td>
+<td style="width: 784px; ">When radiation from the sun causes a global disaster on Earth, survivors on an overnight flight from Brussels race from city to city trying to stay ahead of the sun's rays by remaining in the cover of night.</td>
+
+<td style="width: 74px; ">Netflix<br>S1</td>
+<td style="width: 74px; "><a href="https://www.imdb.com/title/tt10919486/?ref_=nv_sr_srsg_0 " target="_blank " rel="noopener ">IMDb 7.1</a></td>
+</tr>
+</table>
+</div>
+<hr>
+<div id="tt">
+<h2>Children</h2>
+    <table>
+        <tr><td style="width: 350px; ">The Boss Baby</td>
+            <td style="width: 10px; "><img src="https://m.media-amazon.com/images/M/MV5BMTg5MzUxNzgxNV5BMl5BanBnXkFtZTgwMTM2NzQ3MjI@._V1_UY268_CR1,0,182,268_AL__QL50.jpg " alt=" " width="183 " height="268 " /></td>
+            <td style="width: 784px; ">A suit-wearing, briefcase-carrying baby pairs up with his 7-year old brother to stop the dastardly plot of the CEO of Puppy Co.</td>
+
+            <td style="width: 74px; ">Netflix</td>
+            <td style="width: 74px; "><a href="https://www.imdb.com/title/tt3874544/?ref_=nv_sr_srsg_5 " target="_blank " rel="noopener ">IMDb 6.3</a></td>
+            </tr>
+    </table>
+</div>
+<div id="j">
+<h2>Horror</h2>
+<table>
+<tr><td style="width: 350px; ">The Cabin in the Woods</td>
+            <td style="width: 10px; "><img src="https://m.media-amazon.com/images/M/MV5BNTUxNzYyMjg2N15BMl5BanBnXkFtZTcwMTExNzExNw@@._V1_UX182_CR0,0,182,268_AL__QL50.jpg " alt=" " width="183 " height="268 " /></td>
+            <td style="width: 784px; ">Five friends go for a break at a remote cabin, where they get more than they bargained for, discovering the truth behind the cabin in the woods.</td>
+
+            <td style="width: 74px; ">Netflix</td>
+            <td style="width: 74px; "><a href="https://www.imdb.com/title/tt1259521/?ref_=nv_sr_srsg_0 " target="_blank " rel="noopener ">IMDb 7</a></td>
+            </tr>
+<tr><td style="width: 350px; ">Stranger Things<br>(Series)</td>
+            <td style="width: 10px; "><img src="https://m.media-amazon.com/images/M/MV5BMjEzMDAxOTUyMV5BMl5BanBnXkFtZTgwNzAxMzYzOTE@._V1_UX182_CR0,0,182,268_AL__QL50.jpg " alt=" " width="183 " height="268 " /></td>
+            <td style="width: 784px; ">When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.</td>
+
+            <td style="width: 74px; ">Netflix</td>
+            <td style="width: 74px; "><a href="https://www.imdb.com/title/tt4574334/?ref_=nv_sr_srsg_3 " target="_blank " rel="noopener ">IMDb 8.8</a></td>
+            </tr>
+    </table>
+<table>
+    <tr>
+        <td class="abtcont " colspan="5" id="about">
+            <h1>&nbsp;&nbsp;&nbsp;THE LAUNCH TEAM</h1>
+
+            <ul>
+                <li>
+                    <img src="businesswoman.png "> <span id="abc ">M</span>USKAN </li>
+                <li>
+                    <img src="businessman.png "> <span id="abc ">A</span>BHINAV </li>
+                <li>
+                    <img src="businesswoman.png "> <span id="abc ">R</span>ADHIKA </li>
+                <li>
+                    <img src="businessman.png "> <span id="abc ">S</span>ANDEEP </li>
+            </ul>
+            <h1>Contact Us-</h1>
+            <p>Mob: +91-9999-9999<br> E-mail: mars_inc@mars.in</p>
+
+        </td>
+    </tr>
+
+</table>
+
+<script>
+    var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block ";
+  } else {
+    mybutton.style.display = "none ";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+</body>
+
+</html>
